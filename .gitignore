@@ -1,0 +1,33 @@
+## Ignore Visual Studio temporary files, build results, and
+
+.env
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# User-specific files (MonoDevelop/Xamarin Studio)
+*.userprefs
+
+# Mono auto generated files
+mono_crash.*
+
+# Build results
+[Dd]ebug/ 
+
+
+
+
+# .NET
+credential.log 
+kloon.sh 
+projects.json
+tst/
+
+project.fragment.lock.json
+artifacts/
+
+ 
