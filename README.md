@@ -1,11 +1,14 @@
 ## gitjes
 
-github/bitbucket helper(s) to clone and update all repos
+github/bitbucket helper(s) to clone and update all repos living in bitbucket. 
+
+generates a script kloon.sh that can be executed. 
+repositories will be cloned in a subfolder per project
 
 assumes JQ exists on the system 
 install: brew install jq
 
-assumes in environment:
+assumes in the environment:
 * BB_KEY access token (password) is stored in BB_KEY
 * BB_USER username
 * BB_HOST bitbucket hostname
