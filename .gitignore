@@ -6,5 +6,6 @@ kloon.sh
 projects.json
 processed.log
 error.log
+*.json
 
  

@@ -9,14 +9,21 @@ outfile=kloon.sh
 echo generating $outfile...
 echo "echo cloning all repositories from $BB_HOST that BB_USER has access to" > $outfile
 
+echo "passed filename is $1"
+[ -f "$1" ] && {
+    projfile=$1
+    echo "using $projfile"
+} || {
+    projfile=projects.json
+    echo "using default $projfile"
+}
 
 [[ ! $(command -v jq) ]] && {
     echo "jq is not installed or not in the PATH."
     exit 1
 }
 
-projfile=projects.json
-echo "echo started > error.log" >> $outfile
+echo "echo started > processed.log" >> $outfile
 [ -f "$projfile" ] || {
     curl -s --user "$BB_USER:$BB_KEY" $BB_HOST/rest/api/1.0/projects?limit=100 |\
           jq -n '[inputs.values[] | {key: .key, id: .id  ,name: .name, href: .links.self[0].href}]' > "$projfile"
@@ -37,7 +44,7 @@ echo "echo started > error.log" >> $outfile
               curl -s --user "$BB_USER:$BB_KEY" $BB_HOST/rest/api/1.0/projects/$key/repos?limit=100 |\
                 jq '.values[].links.clone[] | select(.name=="http") | .href' |\
                    while read -r href; do
-                      echo "   git -C $key clone $href >> error.log 2>&1" >> $outfile
+                      echo "   git -C $key clone $href >> processed.log 2>&1" >> $outfile
                   done
             
             echo ")" >> $outfile
