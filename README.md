@@ -11,6 +11,6 @@ assumes JQ exists on the system ...
 install: brew install jq
 
 assumes in the environment:
-BB_KEY:    access token (password) is stored in BB_KEY
-BB_USER:   username
-BB_HOST:   bitbucket hostname
+- BB_KEY:    access token (password) is stored in BB_KEY
+- BB_USER:   username
+- BB_HOST:   bitbucket hostname
